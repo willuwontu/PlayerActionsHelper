@@ -12,7 +12,6 @@ namespace PlayerActionsHelper.Extensions
 
         public PlayerActionsAdditionalData()
         {
-
             actions = new Dictionary<string, PlayerAction>();
         }
     }
@@ -32,7 +31,6 @@ namespace PlayerActionsHelper.Extensions
             {
                 return action;
             }
-
             UnityEngine.Debug.LogError($"Attempting to access a Player Action by the name of {name} that doesn't exist, returning null instead.");
             return null;
         }
@@ -44,6 +42,7 @@ namespace PlayerActionsHelper.Extensions
             {
                 return abilities[name].WasPressed;
             }
+            UnityEngine.Debug.LogError($"Attempting to access a Player Action by the name of {name} that doesn't exist, returning false instead.");
             return false;
         }
         public static bool ActionIsPressed(this PlayerActions playerActions, string name)
@@ -53,6 +52,7 @@ namespace PlayerActionsHelper.Extensions
             {
                 return abilities[name].IsPressed;
             }
+            UnityEngine.Debug.LogError($"Attempting to access a Player Action by the name of {name} that doesn't exist, returning false instead.");
             return false;
         }
         public static bool ActionWasReleased(this PlayerActions playerActions, string name)
@@ -62,6 +62,7 @@ namespace PlayerActionsHelper.Extensions
             {
                 return abilities[name].WasReleased;
             }
+            UnityEngine.Debug.LogError($"Attempting to access a Player Action by the name of {name} that doesn't exist, returning false instead.");
             return false;
         }
     }

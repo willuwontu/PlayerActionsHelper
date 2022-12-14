@@ -1,0 +1,11 @@
+{
+    "name":"PlayerActionsHelper",
+    "author_name":"willuwontu",
+    "version_number":"0.0.0",
+    "website_url":"https://github.com/willuwontu/PlayerActionsHelper",
+    "displayName":"Player Action Helper",
+    "description":"Various managers for community usage.",
+    "dependencies": [
+        "BepInEx-BepInExPack_ROUNDS-5.4.1100"
+    ]
+}

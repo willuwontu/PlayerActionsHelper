@@ -32,25 +32,25 @@ namespace PlayerActionsHelper
         }
         void Start()
         {
-
+            PlayerActionManager.RegisterPlayerAction(new ActionInfo("ToggleFlight", new KeyBindingSource(Key.Key1), new DeviceBindingSource(InputControlType.Action3)));
         }
     }
 
-    public class PlayerActionManager
+    public static class PlayerActionManager
     {
         static Dictionary<string, ActionInfo> registeredActions = new Dictionary<string, ActionInfo>();
 
         public static ReadOnlyDictionary<string, ActionInfo> RegisteredActions => new ReadOnlyDictionary<string, ActionInfo>(registeredActions);
 
-        public static void RegisterPlayerAction(string name, ActionInfo actionInfo)
+        public static void RegisterPlayerAction(ActionInfo actionInfo)
         {
-            if (registeredActions.ContainsKey(name))
+            if (registeredActions.ContainsKey(actionInfo.name))
             {
-                UnityEngine.Debug.LogWarning($"An action called {name} was already registered, no new action is registered.");
+                UnityEngine.Debug.LogWarning($"An action called {actionInfo.name} was already registered, no new action is registered.");
                 return;
             }
 
-            registeredActions.Add(name, actionInfo);
+            registeredActions.Add(actionInfo.name, actionInfo);
         }
     }
 
@@ -59,5 +59,12 @@ namespace PlayerActionsHelper
         public string name;
         public BindingSource keyboardlayout;
         public BindingSource controllerLayout;
+
+        public ActionInfo(string name, BindingSource keyboardlayout = null, BindingSource controllerLayout = null)
+        {
+            this.name = name;
+            this.keyboardlayout = keyboardlayout;
+            this.controllerLayout = controllerLayout;
+        }
     }
 }

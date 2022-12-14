@@ -18,7 +18,14 @@ namespace PlayerActionsHelper.Patches
         {
             foreach (string key in PlayerActionManager.RegisteredActions.Keys)
             {
-                __instance.GetAdditionalData().actions[key] = (PlayerAction)typeof(PlayerActions).InvokeMember("CreatePlayerAction", BindingFlags.Instance | BindingFlags.InvokeMethod | BindingFlags.NonPublic, null, __instance, new object[] { key });
+                try
+                {
+                    __instance.GetAdditionalData().actions[key] = new PlayerAction(key, __instance);
+                }
+                catch (Exception e)
+                {
+                    UnityEngine.Debug.LogException(e);
+                }
             }
 
         }

@@ -32,7 +32,7 @@ namespace PlayerActionsHelper
         }
         void Start()
         {
-            PlayerActionManager.RegisterPlayerAction(new ActionInfo("ToggleFlight", new KeyBindingSource(Key.Key1), new DeviceBindingSource(InputControlType.Action3)));
+            
         }
     }
 

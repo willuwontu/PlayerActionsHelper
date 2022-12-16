@@ -25,6 +25,7 @@ namespace PlayerActionsHelper.Patches
                 catch (Exception e)
                 {
                     UnityEngine.Debug.LogException(e);
+                    __instance.GetAdditionalData().actions[key] = __instance.GetPlayerActionByName(key);
                 }
             }
 

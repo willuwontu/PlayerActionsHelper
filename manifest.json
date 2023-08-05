@@ -1,7 +1,7 @@
 {
     "name":"PlayerActionsHelper",
     "author_name":"willuwontu",
-    "version_number":"0.0.0",
+    "version_number":"0.0.1",
     "website_url":"https://github.com/willuwontu/PlayerActionsHelper",
     "displayName":"Player Action Helper",
     "description":"Various managers for community usage.",

@@ -20,10 +20,12 @@ namespace PlayerActionsHelper.Patches
             {
                 try
                 {
-                    __instance.GetAdditionalData().actions[key] = new PlayerAction(key, __instance);
+                    //__instance.GetAdditionalData().actions[key] = new PlayerAction(key, __instance);
+                    __instance.GetAdditionalData().actions[key] = (PlayerAction)typeof(PlayerActions).InvokeMember("CreatePlayerAction", BindingFlags.Instance | BindingFlags.InvokeMethod | BindingFlags.NonPublic, null, __instance, new object[] { key });
                 }
                 catch (Exception e)
                 {
+                    UnityEngine.Debug.LogError($"Error thrown when attempting to create player action '{key}'.");
                     UnityEngine.Debug.LogException(e);
                     __instance.GetAdditionalData().actions[key] = __instance.GetPlayerActionByName(key);
                 }
@@ -36,10 +38,18 @@ namespace PlayerActionsHelper.Patches
         {
             foreach (string key in PlayerActionManager.RegisteredActions.Keys)
             {
-                BindingSource layout = PlayerActionManager.RegisteredActions[key].controllerLayout;
-                if (layout != null)
+                try
                 {
-                    __result.GetAdditionalData().actions[key].AddDefaultBinding(layout);
+                    BindingSource layout = PlayerActionManager.RegisteredActions[key].controllerLayout;
+                    if (layout != null)
+                    {
+                        __result.GetAdditionalData().actions[key].AddDefaultBinding(layout);
+                    }
+                }
+                catch (Exception e)
+                {
+                    UnityEngine.Debug.LogError($"Error thrown when attempting set default binding for player action '{key}'.");
+                    UnityEngine.Debug.LogException(e);
                 }
             }
         }
@@ -50,10 +60,18 @@ namespace PlayerActionsHelper.Patches
         {
             foreach (string key in PlayerActionManager.RegisteredActions.Keys)
             {
-                BindingSource layout = PlayerActionManager.RegisteredActions[key].keyboardlayout;
-                if (layout != null)
+                try
                 {
-                    __result.GetAdditionalData().actions[key].AddDefaultBinding(layout);
+                    BindingSource layout = PlayerActionManager.RegisteredActions[key].keyboardlayout;
+                    if (layout != null)
+                    {
+                        __result.GetAdditionalData().actions[key].AddDefaultBinding(layout);
+                    }
+                }
+                catch (Exception e)
+                {
+                    UnityEngine.Debug.LogError($"Error thrown when attempting set default binding for player action '{key}'.");
+                    UnityEngine.Debug.LogException(e);
                 }
             }
         }

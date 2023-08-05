@@ -10,6 +10,10 @@ Access that action with `player.data.playerActions.GetPlayerAction()` in your mo
 <summary>Change log</summary>
 
 ----
+### v0.0.1
+- Fixed a small bug
+
+----
 ### v0.0.0
 - Initial Release
 

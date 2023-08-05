@@ -16,7 +16,7 @@ namespace PlayerActionsHelper
     {
         private const string ModId = "com.rounds.willuwontu.ActionHelper";
         private const string ModName = "Action Helper";
-        public const string Version = "0.0.0"; // What version are we on (major.minor.patch)?
+        public const string Version = "0.0.1"; // What version are we on (major.minor.patch)?
 
         public static ActionHelper instance { get; private set; }
 
